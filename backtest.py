@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from trade_engine import TradeEngine
 from data_manager import DataManager
-from config import SYMBOL, STOP_LOSS_PCT, TAKE_PROFIT_PCT
+from config import SYMBOL, STOP_LOSS_PCT, TAKE_PROFIT_PCT, START_CAPITAL
 from monitor import Monitor
 
 class Backtester:
@@ -37,7 +37,7 @@ class Backtester:
 
     def run(self, plot=True):
         df = self.fetch_data(days=60)
-        capital = 1000.0
+        capital = START_CAPITAL
         position = 0.0
         entry_price = 0.0
         equity_curve = []
