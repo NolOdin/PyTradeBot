@@ -45,3 +45,7 @@ class DataManager:
 
     def close(self):
         self.conn.close()
+    def export_csv(self, path='trades_report.csv'):
+        df = self.get_history(1000)
+        df.to_csv(path, index=False)
+        print(f"Отчёт сохранён: {path}")

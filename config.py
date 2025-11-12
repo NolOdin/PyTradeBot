@@ -1,17 +1,24 @@
 # config.py
 import os
+from dotenv import load_dotenv 
+
+load_dotenv()
 
 # === ОБЯЗАТЕЛЬНО ===
-BYBIT_API_KEY = os.getenv('BYBIT_API_KEY', 'your_bybit_api_key')
-BYBIT_SECRET = os.getenv('BYBIT_SECRET', 'your_bybit_secret')
-DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY', 'your_deepseek_key')
+BYBIT_API_KEY = os.getenv('BYBIT_API_KEY')
+BYBIT_SECRET = os.getenv('BYBIT_SECRET')
+DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
 DEEPSEEK_BASE_URL = 'https://api.deepseek.com/v1'
 
+
 # === ТОРГОВЛЯ ===
+
 SYMBOL = 'ETH/USDT'
-AMOUNT_ETH = 0.01
-STOP_LOSS_PCT = 0.02
-TAKE_PROFIT_PCT = 0.05
+START_CAPITAL = 200.0           # ← НОВОЕ: стартовый капитал
+RISK_PER_TRADE = 0.01           # 1% от капитала на сделку
+STOP_LOSS_PCT = 0.02            # 2%
+TAKE_PROFIT_PCT = 0.04          # 4% (1:2 риск/прибыль)
+MIN_TRADE_USDT = 5.0            # Мин. сделка (Bybit ~5 USDT)
 DB_PATH = 'trades.db'
 
 # === ТЕЛЕГРАМ — ОПЦИОНАЛЬНО ===
